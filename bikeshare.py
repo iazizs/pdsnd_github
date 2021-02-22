@@ -1,4 +1,4 @@
-import time
+timport time
 import pandas as pd
 import numpy as np
 
@@ -16,6 +16,7 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
+    print("Welcome too bikeshare project\n")
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
 
 
@@ -25,7 +26,7 @@ def get_filters():
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
 
 
-    print('-'*40)
+    print('-'*35)
     return city, month, day
 
 
@@ -61,7 +62,7 @@ def time_stats(df):
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-'*20)
 
 
 def station_stats(df):
@@ -117,6 +118,16 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def Display_data(df):
+    while True:
+        ask_user = input('would you like see the first 5 rows? yes or no:  ').lower()
+        if ask_user == 'yes':
+            rows = 0
+            print('the rows :\n', df.iloc[rows: rows + 5])
+            rows += 5
+            break
+        else:
+            break
 
 def main():
     while True:
@@ -127,6 +138,7 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
+        Display_data(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
